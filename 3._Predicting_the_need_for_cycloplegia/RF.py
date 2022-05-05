@@ -72,7 +72,6 @@ if __name__ == '__main__':
 
     start = time.time()
 
-    # ---循环次数---
     iter_num = 1
 
     total = len(labels) * iter_num
