@@ -21,9 +21,7 @@ dir_checkpoint = 'checkpoints/'
 
 
 def train_fc_net(net, device, train, test, label, epochs, batch_size, lr_init, save_cp):
-    """
-    输入的train, test为dataframe格式
-    """
+
     x_train, y_train = train.iloc[:, :33], train[label]
 
     x_test, y_test = test.iloc[:, :33], test[label]
@@ -110,7 +108,6 @@ def train_fc_net(net, device, train, test, label, epochs, batch_size, lr_init, s
                 # ----focal_loss----
                 # criterion = FocalLoss()
                 # loss = criterion(pred, y, class_weight=(0.2, 0.8), type='sigmoid')
-                # # 每个batch的loss累加每次epoch清零
                 # writer.add_scalar('Loss/train', loss.item(), global_step)
                 # pbar.set_postfix(**{'loss (batch)': loss.item()})
 
@@ -118,30 +115,14 @@ def train_fc_net(net, device, train, test, label, epochs, batch_size, lr_init, s
                 optimizer.zero_grad()
                 loss.backward()
                 nn.utils.clip_grad_value_(net.parameters(),  0.1)
-                # # 梯度裁剪 Clips gradient of an iterable of parameters at specified value.
                 optimizer.step()
 
-                # -----混合精度运算-----
-                # with amp.autocast():          ###
-                #     pred = net(x)
-                #     criterion = nn.BCEWithLogitsLoss()
-                #     loss = criterion(pred, y)
-
-                # # epoch_loss += loss.item()
-                # # optimizer.zero_grad()
-                # # loss.backward()
-                # # optimizer.step()
-                # scaler.scale(loss).backward() ###
-                # nn.utils.clip_grad_value_(net.parameters(), 0.1)
-                # scaler.step(optimizer)        ###
-                # scaler.update()               ###
-                # ----------------------
                 pbar.update(x.shape[0])
                 global_step += 1
 
                 schedule.step()
 
-                # ------记录------
+                # ------REC------
                 if global_step % (len(x_train_) // (3 * batch_size)) == 0:
 
                     for tag, value in net.named_parameters():
@@ -228,7 +209,6 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
     device = torch.device('cuda')
 
-#----模型参数加载---
     start = time.time()
 
     excel_path = os.path.abspath('data_processed.xlsx')
