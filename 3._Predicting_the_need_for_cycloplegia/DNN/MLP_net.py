@@ -14,31 +14,31 @@ class MLP_net_25(torch.nn.Module):
         self.hidden_1 = torch.nn.Linear((26+1)*32, (5+1)*32)
         self.bn1 = torch.nn.BatchNorm1d((5+1)*32)
 
-        self.hidden_2 = torch.nn.Linear((5+1)*32, (15+1)*32)  # hidden layer
+        self.hidden_2 = torch.nn.Linear((5+1)*32, (15+1)*32) 
         self.bn2 = torch.nn.BatchNorm1d((15+1)*32)
 
         self.hidden_3 = torch.nn.Linear((15+1)*32, (2+1)*32)
         self.bn3 = torch.nn.BatchNorm1d((2+1)*32)
 
-        self.hidden_4 = torch.nn.Linear((2+1)*32, (4+1)*32)  # hidden layer
+        self.hidden_4 = torch.nn.Linear((2+1)*32, (4+1)*32)  
         self.bn4 = torch.nn.BatchNorm1d((4+1)*32)
 
-        self.out = torch.nn.Linear((4+1)*32, n_outputs)  # output layer
+        self.out = torch.nn.Linear((4+1)*32, n_outputs)  
 
     def forward(self, x):
-        x = F.leaky_relu(self.hidden_0(x))  # activation function for hidden layer
+        x = F.leaky_relu(self.hidden_0(x))  
         x = self.dropout(self.bn0(x))
 
-        x = F.leaky_relu(self.hidden_1(x))  # activation function for hidden layer
+        x = F.leaky_relu(self.hidden_1(x)) 
         x = self.dropout(self.bn1(x))
 
-        x = F.leaky_relu(self.hidden_2(x))  # activation function for hidden layer
+        x = F.leaky_relu(self.hidden_2(x)) 
         x = self.dropout(self.bn2(x))
 
-        x = F.leaky_relu(self.hidden_3(x))  # activation function for hidden layer
+        x = F.leaky_relu(self.hidden_3(x))  
         x = self.dropout(self.bn3(x))
 
-        x = F.leaky_relu(self.hidden_4(x))  # activation function for hidden layer
+        x = F.leaky_relu(self.hidden_4(x))  
         x = self.dropout(self.bn4(x))
 
         x = self.out(x)
@@ -58,31 +58,31 @@ class MLP_net_5(torch.nn.Module):
         self.hidden_1 = torch.nn.Linear((19+1)*32, (3+1)*32)
         self.bn1 = torch.nn.BatchNorm1d((3+1)*32)
 
-        self.hidden_2 = torch.nn.Linear((3+1)*32, (10+1)*32)  # hidden layer
+        self.hidden_2 = torch.nn.Linear((3+1)*32, (10+1)*32) 
         self.bn2 = torch.nn.BatchNorm1d((10+1)*32)
 
         self.hidden_3 = torch.nn.Linear((10+1)*32, (0+1)*32)
         self.bn3 = torch.nn.BatchNorm1d((0+1)*32)
 
-        self.hidden_4 = torch.nn.Linear((0+1)*32, (10+1)*32)  # hidden layer
+        self.hidden_4 = torch.nn.Linear((0+1)*32, (10+1)*32) 
         self.bn4 = torch.nn.BatchNorm1d((10+1)*32)
 
-        self.out = torch.nn.Linear((10+1)*32, n_outputs)  # output layer
+        self.out = torch.nn.Linear((10+1)*32, n_outputs)  
 
     def forward(self, x):
-        x = F.leaky_relu(self.hidden_0(x))  # activation function for hidden layer
+        x = F.leaky_relu(self.hidden_0(x))  
         x = self.dropout(self.bn0(x))
 
-        x = F.leaky_relu(self.hidden_1(x))  # activation function for hidden layer
+        x = F.leaky_relu(self.hidden_1(x))  
         x = self.dropout(self.bn1(x))
 
-        x = F.leaky_relu(self.hidden_2(x))  # activation function for hidden layer
+        x = F.leaky_relu(self.hidden_2(x)) 
         x = self.dropout(self.bn2(x))
 
-        x = F.leaky_relu(self.hidden_3(x))  # activation function for hidden layer
+        x = F.leaky_relu(self.hidden_3(x)) 
         x = self.dropout(self.bn3(x))
 
-        x = F.leaky_relu(self.hidden_4(x))  # activation function for hidden layer
+        x = F.leaky_relu(self.hidden_4(x))  
         x = self.dropout(self.bn4(x))
 
         x = self.out(x)
@@ -102,31 +102,31 @@ class MLP_net_75(torch.nn.Module):
         self.hidden_1 = torch.nn.Linear((22+1)*32, (1+1)*32)
         self.bn1 = torch.nn.BatchNorm1d((1+1)*32)
 
-        self.hidden_2 = torch.nn.Linear((1+1)*32, (5+1)*32)  # hidden layer
+        self.hidden_2 = torch.nn.Linear((1+1)*32, (5+1)*32)  
         self.bn2 = torch.nn.BatchNorm1d((5+1)*32)
 
         self.hidden_3 = torch.nn.Linear((5+1)*32, (8+1)*32)
         self.bn3 = torch.nn.BatchNorm1d((8+1)*32)
 
-        self.hidden_4 = torch.nn.Linear((8+1)*32, (4+1)*32)  # hidden layer
+        self.hidden_4 = torch.nn.Linear((8+1)*32, (4+1)*32)  
         self.bn4 = torch.nn.BatchNorm1d((4+1)*32)
 
-        self.out = torch.nn.Linear((4+1)*32, n_outputs)  # output layer
+        self.out = torch.nn.Linear((4+1)*32, n_outputs) 
 
     def forward(self, x):
-        x = F.relu(self.hidden_0(x))  # activation function for hidden layer
+        x = F.relu(self.hidden_0(x)) 
         x = self.dropout(self.bn0(x))
 
-        x = F.relu(self.hidden_1(x))  # activation function for hidden layer
+        x = F.relu(self.hidden_1(x)) 
         x = self.dropout(self.bn1(x))
 
-        x = F.relu(self.hidden_2(x))  # activation function for hidden layer
+        x = F.relu(self.hidden_2(x))  
         x = self.dropout(self.bn2(x))
 
-        x = F.relu(self.hidden_3(x))  # activation function for hidden layer
+        x = F.relu(self.hidden_3(x))  
         x = self.dropout(self.bn3(x))
 
-        x = F.relu(self.hidden_4(x))  # activation function for hidden layer
+        x = F.relu(self.hidden_4(x))  
         x = self.dropout(self.bn4(x))
 
         x = self.out(x)
@@ -146,31 +146,31 @@ class MLP_net_thri(torch.nn.Module):
         self.hidden_1 = torch.nn.Linear((20+1)*32, (8+1)*32)
         self.bn1 = torch.nn.BatchNorm1d((8+1)*32)
 
-        self.hidden_2 = torch.nn.Linear((8+1)*32, (3+1)*32)  # hidden layer
+        self.hidden_2 = torch.nn.Linear((8+1)*32, (3+1)*32)  
         self.bn2 = torch.nn.BatchNorm1d((3+1)*32)
 
         self.hidden_3 = torch.nn.Linear((3+1)*32, (15+1)*32)
         self.bn3 = torch.nn.BatchNorm1d((15+1)*32)
 
-        self.hidden_4 = torch.nn.Linear((15+1)*32, (2+1)*32)  # hidden layer
+        self.hidden_4 = torch.nn.Linear((15+1)*32, (2+1)*32) 
         self.bn4 = torch.nn.BatchNorm1d((2+1)*32)
 
-        self.out = torch.nn.Linear((2+1)*32, n_outputs)  # output layer
+        self.out = torch.nn.Linear((2+1)*32, n_outputs)  
 
     def forward(self, x):
-        x = F.relu(self.hidden_0(x))  # activation function for hidden layer
+        x = F.relu(self.hidden_0(x)) 
         x = self.dropout(self.bn0(x))
 
-        x = F.relu(self.hidden_1(x))  # activation function for hidden layer
+        x = F.relu(self.hidden_1(x))  
         x = self.dropout(self.bn1(x))
 
-        x = F.relu(self.hidden_2(x))  # activation function for hidden layer
+        x = F.relu(self.hidden_2(x))  
         x = self.dropout(self.bn2(x))
 
-        x = F.relu(self.hidden_3(x))  # activation function for hidden layer
+        x = F.relu(self.hidden_3(x))  
         x = self.dropout(self.bn3(x))
 
-        x = F.relu(self.hidden_4(x))  # activation function for hidden layer
+        x = F.relu(self.hidden_4(x))  
         x = self.dropout(self.bn4(x))
 
         x = self.out(x)
