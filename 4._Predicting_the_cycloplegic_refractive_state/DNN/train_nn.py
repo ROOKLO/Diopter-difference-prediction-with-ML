@@ -106,7 +106,7 @@ def train_fc_net(net, device, train, test, label, epochs, batch_size, lr_init, s
 
                 pred = net(x)
                 weight = torch.as_tensor([0.7716, 1.5361, 0.9497]).to(device)
-                # ---------OneHot_loss------------
+                
                 log_prob = torch.log_softmax(pred, dim=1)
                 log_prob = log_prob * weight
                 loss = -torch.sum(log_prob * y) / batch_size
