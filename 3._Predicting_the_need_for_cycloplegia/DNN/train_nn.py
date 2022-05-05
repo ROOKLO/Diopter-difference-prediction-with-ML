@@ -116,7 +116,23 @@ def train_fc_net(net, device, train, test, label, epochs, batch_size, lr_init, s
                 loss.backward()
                 nn.utils.clip_grad_value_(net.parameters(),  0.1)
                 optimizer.step()
+            
+                # -----mixed precision------
+                # with amp.autocast():          ###
+                #     pred = net(x)
+                #     criterion = nn.BCEWithLogitsLoss()
+                #     loss = criterion(pred, y)
 
+                # # epoch_loss += loss.item()
+                # # optimizer.zero_grad()
+                # # loss.backward()
+                # # optimizer.step()
+                # scaler.scale(loss).backward() ###
+                # nn.utils.clip_grad_value_(net.parameters(), 0.1)
+                # scaler.step(optimizer)        ###
+                # scaler.update()               ###
+                # ----------------------
+                
                 pbar.update(x.shape[0])
                 global_step += 1
 
