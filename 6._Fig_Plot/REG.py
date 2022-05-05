@@ -1,8 +1,6 @@
 import numpy as np
 import seaborn as sns
 
-
-# --------plot figs--------
 def plot_pre_scatter(true, pre, save_pth):
     min_ = np.min(true)
     max_ = np.max(true)
