@@ -156,7 +156,7 @@ def train_mlp(x_data, y_data, cv_num, **param):
                 scaler.step(optimizer)                              ###
                 scaler.update()                                     ###
 
-                # 非混合精度
+                # ---non Mixed Precision---
                 # pred = net(x)
                 # criterion = nn.BCEWithLogitsLoss()
                 # loss = criterion(pred, y)
