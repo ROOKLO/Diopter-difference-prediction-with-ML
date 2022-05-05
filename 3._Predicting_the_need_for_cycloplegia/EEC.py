@@ -23,7 +23,7 @@ def count_scores(true_label, pred_label, proba):
     return acc, auc, sensitivity, specificity
 
 
-dt_25 = DecisionTreeClassifier(criterion='entropy',max_depth=12,max_features=0.95,min_samples_leaf=0.008,min_samples_split=0.009,splitter='best')  # ① (final)
+dt_25 = DecisionTreeClassifier(criterion='entropy',max_depth=12,max_features=0.95,min_samples_leaf=0.008,min_samples_split=0.009,splitter='best')  
 dt_5 = DecisionTreeClassifier(criterion='gini',max_depth=13,max_features=0.9,min_samples_leaf=0.001,min_samples_split=0.005,splitter='random')
 dt_75 = DecisionTreeClassifier(criterion='gini',max_depth=20,max_features=1.0,min_samples_leaf=0.004,min_samples_split=0.032,splitter='random')
 
