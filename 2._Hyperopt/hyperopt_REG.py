@@ -20,28 +20,28 @@ ext_space = {'n_estimators': hp.choice('n_estimators', [100, 200, 300, 400, 500,
             }
 
 
-XGB_space = {'n_estimators': hp.choice('n_estimators', [100, 200, 300, 400, 500, 600, 700, 800]),      # 8
-             'learning_rate': hp.quniform('learning_rate', 0.1, 1, 0.05),                              # 18
-             'max_depth': hp.choice("max_depth", np.arange(3, 30, 1)),                                 # 15
-             'subsample': hp.quniform('subsample', 0.1, 1.0, 0.1),                                     # 5
-             'min_child_weight': hp.quniform('min_child_weight', 1, 21, 1),                            # 21
-             'booster':hp.choice('booster', ['gbtree', 'gblinear']),                                   # 2
-             'scale_pos_weight':hp.quniform('scale_pos_weight', 0.1, 1.0, 0.1),                        # 10
-             'gamma':hp.quniform('gamma', 0, 1, 0.05)                                                  # 20
+XGB_space = {'n_estimators': hp.choice('n_estimators', [100, 200, 300, 400, 500, 600, 700, 800]),      
+             'learning_rate': hp.quniform('learning_rate', 0.1, 1, 0.05),                            
+             'max_depth': hp.choice("max_depth", np.arange(3, 30, 1)),                               
+             'subsample': hp.quniform('subsample', 0.1, 1.0, 0.1),                                   
+             'min_child_weight': hp.quniform('min_child_weight', 1, 21, 1),                          
+             'booster':hp.choice('booster', ['gbtree', 'gblinear']),                                
+             'scale_pos_weight':hp.quniform('scale_pos_weight', 0.1, 1.0, 0.1),                       
+             'gamma':hp.quniform('gamma', 0, 1, 0.05)                                               
             }
 
 # -----------ada_reg_space---------------
-dt_space = {'splitter':hp.choice('dt_splitter', ["best", "random"]),                                   # 2
-            'max_depth':hp.quniform('dt_max_depth', 7, 14, 1),                                         # 7
-            'min_samples_split':hp.quniform('dt_min_samples_split', 0.001, 0.2, 0.001),                # 100
-            'min_samples_leaf': hp.quniform('dt_min_samples_leaf', 0.001, 0.2, 0.001),                 # 50
-            'max_features':hp.quniform('dt_max_features', 0.5, 1.0, 0.05),                             # 20
-            }                                                                                          # 2,800,000
+dt_space = {'splitter':hp.choice('dt_splitter', ["best", "random"]),                                 
+            'max_depth':hp.quniform('dt_max_depth', 7, 14, 1),                                        
+            'min_samples_split':hp.quniform('dt_min_samples_split', 0.001, 0.2, 0.001),               
+            'min_samples_leaf': hp.quniform('dt_min_samples_leaf', 0.001, 0.2, 0.001),                
+            'max_features':hp.quniform('dt_max_features', 0.5, 1.0, 0.05),                          
+            }                                                                                          
 
 
 Adaboost_space = {
-                  'n_estimators': hp.choice('ada_n_estimators', [100, 200, 300, 400, 500, 600, 700]),  # 7
-                  'learning_rate': hp.quniform('ada_learning_rate', 0.1, 1, 0.05),                     # 1
+                  'n_estimators': hp.choice('ada_n_estimators', [100, 200, 300, 400, 500, 600, 700]),  
+                  'learning_rate': hp.quniform('ada_learning_rate', 0.1, 1, 0.05),                    
                   }
 ada_spaces = dict({'dt':dt_space, 'ada':Adaboost_space})
 
@@ -52,11 +52,11 @@ rbf_svr_space = {'C': hp.quniform('C', 0.01, 50, 0.01),             # 5000
                  }
 
 # ----------RF---------------
-RFr_space = {'n_estimators': hp.choice('n_estimators', [100, 200, 300, 400, 500, 600, 700, 800, 900]),  # 9                                # 2
-            'max_depth': hp.quniform('max_depth', 1, 15, 1),                                           # 15
-            'min_samples_split': hp.quniform('min_samples_split', 0.01, 1, 0.01),                      # 100
-            'min_samples_leaf': hp.quniform('min_samples_leaf', 0.01, 0.5, 0.01),                      # 50
-            'max_features':hp.quniform('max_features', 0.05, 1, 0.05),                                 # 20
+RFr_space = {'n_estimators': hp.choice('n_estimators', [100, 200, 300, 400, 500, 600, 700, 800, 900]), 
+            'max_depth': hp.quniform('max_depth', 1, 15, 1),                                          
+            'min_samples_split': hp.quniform('min_samples_split', 0.01, 1, 0.01),                     
+            'min_samples_leaf': hp.quniform('min_samples_leaf', 0.01, 0.5, 0.01),                     
+            'max_features':hp.quniform('max_features', 0.05, 1, 0.05),                               
             }
 
 # -------------data----------------
@@ -137,9 +137,3 @@ best = fmin(
 )
 print("Best: {}".format(best))
 print(min(trails.results, key=lambda keys:keys['loss']))
-
-
-
-
-
-
